@@ -22,7 +22,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
     def _build_model(self):
         model = self.model_dict[self.args.model].Model(self.args).float()
 
-         # 查看参数  
+        # 查看参数  
         print("\n=== TimesNet 参数示例 ===")
         params = list(model.parameters())  
         print(f"总参数数量: {len(params)}")  
