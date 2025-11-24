@@ -22,6 +22,13 @@ class Exp_Long_Term_Forecast(Exp_Basic):
     def _build_model(self):
         model = self.model_dict[self.args.model].Model(self.args).float()
 
+         # 查看参数  
+        print("\n=== TimesNet 参数示例 ===")  
+        for name, param in list(model.named_parameters())[:5]:  # 只看前5个  
+            print(f"{name}:")  
+            print(f"  形状: {param.shape}")  
+            print(f"  前3个值: {param.data.flatten()[:3]}")  
+
         if self.args.use_multi_gpu and self.args.use_gpu:
             model = nn.DataParallel(model, device_ids=self.args.device_ids)
         return model
